@@ -16,10 +16,10 @@
 - Data Vault 2.0 – методология моделирования DDS.
 
 - REST API – источник данных.
-- 
+  
 ## Как запустить
-   ```bash
 1. Установите PostgreSQL
+   ```bash
 docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5432 -d postgres
 ```
 2. Проверка работы docker
