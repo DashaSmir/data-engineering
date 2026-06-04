@@ -20,8 +20,8 @@
 ## Как запустить
 1. Установите PostgreSQL
    ```bash
-docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5432 -d postgres
-```
+   docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5432 -d postgres
+   ```
 2. Проверка работы docker
    ```bash
    docker ps
@@ -47,8 +47,6 @@ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5433:54
    ```
 Далее выполнено подключени к БД через DBeaver, результат выполнения прикреплен ниже:
 
-<img width="239" height="103" alt="Снимок экрана 2026-06-04 223339" src="https://github.com/user-attachments/assets/c7a8b5d9-ebab-42b4-bc57-c493bc3cf470" />
-
 <img width="1700" height="246" alt="Снимок экрана 2026-06-04 223429" src="https://github.com/user-attachments/assets/72c7c517-7a22-44a9-a6cb-9a39d1af9d79" />
 
 <img width="896" height="213" alt="Снимок экрана 2026-06-04 223403" src="https://github.com/user-attachments/assets/49e0a52f-46a4-4c6d-b26d-0c0837ec0736" />
@@ -59,6 +57,9 @@ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5433:54
 
 <img width="336" height="82" alt="Снимок экрана 2026-06-04 223344" src="https://github.com/user-attachments/assets/3b4f0729-dced-4c3c-b44b-e8e74dd05fcf" />
 
+
+<img width="239" height="103" alt="Снимок экрана 2026-06-04 223339" src="https://github.com/user-attachments/assets/c7a8b5d9-ebab-42b4-bc57-c493bc3cf470" />
+
 ## Потоки данных
 ### ELT1 – Загрузка в STG
 
@@ -68,20 +69,16 @@ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5433:54
 
    - Запись в таблицу stg.posts с меткой времени load_ts.
 
-
 ### ELT2 – Трансформация STG в DDS
 
-    - Читаются все записи из stg.posts.
+Для каждой записи:
 
-    Для каждой записи:
-
-       - Вычисляются хэши
-
-       - Происходит вставка в hub_post (если ещё нет такого post_hk).
-
-       - Происходит вставка в hub_user (если ещё нет такого user_hk).
-
-       - Происходит вставка в link_post_user (если ещё нет такой связи).
-
-       - Происходит вставка в sat_post.
-
+   - Вычисляются хэши
+     
+   - Происходит вставка в hub_post (если ещё нет такого post_hk).
+     
+   - Происходит вставка в hub_user (если ещё нет такого user_hk).
+     
+   - Происходит вставка в link_post_user (если ещё нет такой связи).
+     
+   - Происходит вставка в sat_post.
